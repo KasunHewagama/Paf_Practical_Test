@@ -85,10 +85,38 @@ public class AppointmentAPI extends HttpServlet {
 		AppointmentServiceImpl appointmentServiceImpl = new AppointmentServiceImpl();
 		
 		Map paras = getParasMap(request);
-		System.out.println("appointment id: " + paras.get("hidAppointmentIDSave").toString());
-		System.out.println("patient id: " + paras.get("patientId").toString());
-		System.out.println("paymeint id: " + paras.get("email").toString());
-
+		System.out.println("Appointment Id: " + paras.get("hidAppointmentIDSave").toString());
+		System.out.println("Patient Name: " + paras.get("patientIame").toString());
+		/*
+		 * System.out.println("Patient Name: " + paras.get("patientName").toString());
+		 * System.out.println("Phone: " + paras.get("phone").toString());
+		 * System.out.println("Doctor Name: " + paras.get("doctorName").toString());
+		 * System.out.println("Specialization: " +
+		 * paras.get("specialization").toString()); System.out.println("Hospital Id: " +
+		 * paras.get("hospitalId").toString()); System.out.println("Hospital Name: " +
+		 * paras.get("hospitalName").toString());
+		 * System.out.println("Appointment Date: " +
+		 * paras.get("appointmentDate").toString());
+		 * System.out.println("Appointment Time: " +
+		 * paras.get("appointmentTime").toString());
+		 * System.out.println("Appointment Status: " +
+		 * paras.get("appointmentStatus").toString());
+		 */
+		
+		String output = appointmentServiceImpl.updateAppointment(
+				paras.get("hidAppointmentIDSave").toString(),
+				paras.get("patientId").toString(),
+				paras.get("patientName").toString(),
+				paras.get("phone").toString(),
+				paras.get("doctorName").toString(),
+				paras.get("specialization").toString(),
+				paras.get("hospitalId").toString(),
+				paras.get("hospitalName").toString(),
+				paras.get("appointmentDate").toString(),
+				paras.get("appointmentTime").toString());
+		
+		response.getWriter().write(output);
+		
 	}
 
 	/* (non-Javadoc)
@@ -101,6 +129,9 @@ public class AppointmentAPI extends HttpServlet {
 		Map paras = getParasMap(request);
 		
 		String output = appointmentServiceImpl.cancelAppointment(paras.get("appointmentId").toString());
+
+		response.getWriter().write(output);
+		
 	}
 	
 	

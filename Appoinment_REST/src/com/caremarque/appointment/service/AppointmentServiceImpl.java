@@ -76,12 +76,16 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			preparedStatement.setString(13, appointment.getAppointmentStatus());
 
 			preparedStatement.executeUpdate();
+			
+			String newAppointment = getAppointments();
 
-			output = "Appointment No:" + appointmentId + " is Successfully Inserted...!";
+			//output = "Appointment No:" + appointmentId + " is Successfully Inserted...!";
+			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}";
 
 		} catch (Exception e) {
 
-			output = "Error when Inserting the Appointment...!";
+			//output = "Error when Inserting the Appointment...!";
+			output = "{\"status\" : \"error\", \"data\" : \"Error while entering to the system..!\"}";
 			System.err.println(e.getMessage());
 			log.log(Level.SEVERE, e.getMessage());
 
@@ -356,7 +360,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public String updateAppointment(String appointmentId, Appointment appointment) {
+	public String updateAppointment(String appointmnetId, String patientId, String patientName, String phone, String doctorName, String specialization, String hospitalId,String hospitalName, String appointmentDate, String appointmentTime) {
 		
 		String output = "";
 		PreparedStatement pStatement = null;
@@ -368,29 +372,32 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 			pStatement = con.prepareStatement(query);
 			
-			pStatement.setString(1, appointment.getAppointmentId());
-			pStatement.setString(2, appointment.getPatientId());
-			pStatement.setString(3, appointment.getPatientName());
-			pStatement.setString(4, appointment.getPhone());
-			pStatement.setString(5, appointment.getDoctorName());
-			pStatement.setString(6, appointment.getSpecialization());
-			pStatement.setString(7, appointment.getHospitalId());
-			pStatement.setString(8, appointment.getHospitalName());
-			pStatement.setString(9, appointment.getAppointmentDate());
-			pStatement.setString(10, appointment.getAppointmentTime());
-			pStatement.setString(11, LocalDate.now().toString());
-			pStatement.setString(12, LocalTime.now().toString());
-			pStatement.setString(13, "Pending");
-			pStatement.setString(14, appointment.getAppointmentId());
+			pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmnetId);
+			pStatement.setString(Constants.COLUMN_INDEX_TWO, patientId);
+			pStatement.setString(Constants.COLUMN_INDEX_THREE, patientName);
+			pStatement.setString(Constants.COLUMN_INDEX_FOUR, phone);
+			pStatement.setString(Constants.COLUMN_INDEX_FIVE, doctorName);
+			pStatement.setString(Constants.COLUMN_INDEX_SIX, specialization);
+			pStatement.setString(Constants.COLUMN_INDEX_SEVEN, hospitalId);
+			pStatement.setString(Constants.COLUMN_INDEX_EIGHT, hospitalName);
+			pStatement.setString(Constants.COLUMN_INDEX_NINE, patientId);
+			pStatement.setString(Constants.COLUMN_INDEX_TEN, patientId);
+			pStatement.setString(Constants.COLUMN_INDEX_ELEVEN, LocalDate.now().toString());
+			pStatement.setString(Constants.COLUMN_INDEX_TWELVE, LocalTime.now().toString());
+			pStatement.setString(Constants.COLUMN_INDEX_THIRTEEN, "Pending");
+			pStatement.setString(Constants.COLUMN_INDEX_FOURTEEN, appointmnetId);
 			
 			pStatement.execute();
 			
-			output = "Appointment No:" + appointmentId + " is Successfully Updated...!";
-
+			System.out.println("Update patintId : " + appointmnetId);
+			
+			String newAppointment = getAppointments();
+			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}"; 
+			
 
 		} catch (Exception e) {
 			
-			output = "Error while updating the Appointment...!";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the Appointment details..!\"}"; 
 			System.err.println(e.getMessage());
 			log.log(Level.SEVERE, e.getMessage());
 					
@@ -430,11 +437,12 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmnetId);
 			pStatement.execute();
 			
-			output = "Appointment No:" + appointmnetId + " is Successfully Deleted...! ";
-			
+			String newAppointment = getAppointments(); 
+			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}"; 
+
 		} catch (Exception e) {
 
-			output = "Error while deleting the appointment";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the Appointment details..!\"}"; 
 			System.err.println(e.getMessage());
 			log.log(Level.SEVERE, e.getMessage());
 		

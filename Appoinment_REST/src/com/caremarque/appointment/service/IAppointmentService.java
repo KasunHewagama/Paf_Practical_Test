@@ -12,9 +12,9 @@ public interface IAppointmentService {
 	
 	public String getAppointments();	
 	
-	public String updateAppointment(String appointmentId,Appointment appointment);
+	public String updateAppointment(String appointmnetId, String patientId, String patientName, String phone, String doctorName, String specialization, String hospitalId,String hospitalName, String appointmentDate, String appointmentTime);
 
-	public String cancelAppointment(String appointmnetId);
+	public String cancelAppointment(String appointmentId);
 	
 	public ArrayList<String> getAppointmentIDs();
 	

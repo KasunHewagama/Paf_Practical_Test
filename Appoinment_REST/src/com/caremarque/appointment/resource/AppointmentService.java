@@ -114,7 +114,7 @@ public class AppointmentService {
 		appointment.setAppointmentDate(appointmentDate);
 		appointment.setAppointmentTime(appointmentTime);
 		
-		String output = as.updateAppointment(appointmentId,appointment);
+		String output = as.updateAppointment(appointmentId, patientId, patientName, phone, doctorName, specialization, hospitalId, hospitalName, appointmentDate, appointmentTime);
 		
 		return output;
 		
