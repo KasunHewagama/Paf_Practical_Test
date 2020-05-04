@@ -129,7 +129,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 					+ "<th scope=\"col\">Doctor Name</th> " + "<th scope=\"col\">Specialization</th> "
 					+ "<th scope=\"col\">Hospital Id</th> " + "<th scope=\"col\">Hospital Name</th> "
 					+ "<th scope=\"col\">Appointment Date</th> " + "<th scope=\"col\">Appointment Time</th> "
-					+ "<th scope=\"col\">Last Update Date</th> " + "<th scope=\"col\">Last Update Time No</th> "
+					+ "<th scope=\"col\">Last Update Date</th> " + "<th scope=\"col\">Last Update Time</th> "
+					+ "<th scope=\"col\">Appointment Status</th>" 
 					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
 			
 			while(rs.next()) {
@@ -277,11 +278,12 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	
 			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
 					+ "<tr>" + "<th scope=\"col\">Appointment Id</th> " + "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Phone</th> "
-					+ "<th scope=\"col\">Doctor Name</th> " + "<th scope=\"col\">Specialization</th> "
-					+ "<th scope=\"col\">Hospital Id</th> " + "<th scope=\"col\">Hospital Name</th> "
-					+ "<th scope=\"col\">Appointment Date</th> " + "<th scope=\"col\">Appointment Time</th> "
-					+ "<th scope=\"col\">Last Update Date</th> " + "<th scope=\"col\">Last Update Time No</th> "
+					+ "<th scope=\"col\">Patient_Name</th> " + "<th scope=\"col\">Phone</th> "
+					+ "<th scope=\"col\">Doctor_Name</th> " + "<th scope=\"col\">Specialization</th> "
+					+ "<th scope=\"col\">Hospital_Id</th> " + "<th scope=\"col\">Hospital_Name</th> "
+					+ "<th scope=\"col\">Appointment_Date</th> " + "<th scope=\"col\">Appointment_Time</th> "
+					+ "<th scope=\"col\">Last_Update_Date</th> " + "<th scope=\"col\">Last_Update_Time</th> "
+					+ "<th scope=\"col\">Appointment_Status</th>" 
 					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
 
 			while (rs.next()) {
@@ -315,16 +317,21 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TEN) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_ELEVEN) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWELVE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td></tr>";
+				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td>";
 				
-				output += "<td>"
-						+ "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
-						+ "</td>"
-						+ "<td>"
-						+ "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-appointmentid='"
-						+ rs.getString(Constants.COLUMN_INDEX_ONE) + "'>" 
-						+ "</td>"
-						+ "</tr>";
+				/*
+				 * output += "<td>" +
+				 * "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
+				 * + "</td>" + "<td>" +
+				 * "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-appointmentid='"
+				 * + rs.getString(Constants.COLUMN_INDEX_ONE) + "'>" + "</td>" + "</tr>";
+				 */
+				
+				
+				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
+						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentId = '"+ rs.getString(Constants.COLUMN_INDEX_ONE) +"'>" 
+						+ "</td></tr>";
+				
 				
 				System.out.println("Data Retrieved from database...!");
 			}
