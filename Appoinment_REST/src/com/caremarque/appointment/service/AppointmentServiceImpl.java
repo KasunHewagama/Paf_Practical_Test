@@ -119,19 +119,14 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			PreparedStatement pStatement = con.prepareStatement(query);
 			ResultSet rs = pStatement.executeQuery();
 			
-			output = "<table border=\"1\"> <tr><th>appointmentId</th> " 
-					+ "<th>patientId</th> " 
-					+ "<th>patientName</th> " 
-					+ "<th>phone</th> "
-					+ "<th>doctorName</th> " 
-					+ "<th>specialization</th> " 
-					+ "<th>hospitalId</th> "
-					+ "<th>hospitalName</th> " 
-					+ "<th>appointmentDate</th> " 
-					+ "<th>appointmentTime</th> "
-					+ "<th>lastUpdateDate</th> " 
-					+ "<th>lastUpdateTime</th> " 
-					+ "<th>appointmentStatus</th></tr>";
+			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
+					+ "<tr>" + "<th scope=\"col\">Appointment Id</th> " + "<th scope=\"col\">Patient Id</th> "
+					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Phone</th> "
+					+ "<th scope=\"col\">Doctor Name</th> " + "<th scope=\"col\">Specialization</th> "
+					+ "<th scope=\"col\">Hospital Id</th> " + "<th scope=\"col\">Hospital Name</th> "
+					+ "<th scope=\"col\">Appointment Date</th> " + "<th scope=\"col\">Appointment Time</th> "
+					+ "<th scope=\"col\">Last Update Date</th> " + "<th scope=\"col\">Last Update Time No</th> "
+					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
 			
 			while(rs.next()) {
 				Appointment appointment = new Appointment();
@@ -149,7 +144,9 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				appointment.setAppointmentStatus(rs.getString(Constants.COLUMN_INDEX_TWELVE));
 				arrayList.add(appointment);
 				
-				output += "<tr><td>" + rs.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
+				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+						+ "<input id='hidAppointmentIdUpdate' name = 'hidAppointmentIdUpdate' type='hidden' value='" +rs.getString(Constants.COLUMN_INDEX_ONE)+"'>"
+						+ rs.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
@@ -162,6 +159,15 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_ELEVEN) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWELVE) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td></tr>";
+				
+				output += "<td>"
+						+ "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
+						+ "</td>"
+						+ "<td>"
+						+ "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-appointmentid='"
+						+ rs.getString(Constants.COLUMN_INDEX_ONE) + "'>" 
+						+ "</td>"
+						+ "</tr>";
 				
 				System.out.println("Data Retrieved from DB...!");
 			}
@@ -264,22 +270,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 			DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
 			
-
-			output = "<table border=\"1\"> <tr><th>appointmentId</th> " 
-					+ "<th>patientId</th> " 
-					+ "<th>patientName</th> " 
-					+ "<th>phone</th> "
-					+ "<th>doctorName</th> " 
-					+ "<th>specialization</th> " 
-					+ "<th>hospitalId</th> "
-					+ "<th>hospitalName</th> " 
-					+ "<th>appointmentDate</th> " 
-					+ "<th>appointmentTime</th> "
-					+ "<th>lastUpdateDate</th> " 
-					+ "<th>lastUpdateTime</th> " 
-					+ "<th>appointmentStatus</th></tr>";
-			
-			output = "<table class=\" table table-sm table-responsive\" style=\"font-family: 'Roboto', sans-serif\" > "
+	
+			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
 					+ "<tr>" + "<th scope=\"col\">Appointment Id</th> " + "<th scope=\"col\">Patient Id</th> "
 					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Phone</th> "
 					+ "<th scope=\"col\">Doctor Name</th> " + "<th scope=\"col\">Specialization</th> "
