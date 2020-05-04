@@ -108,7 +108,7 @@
 
 		</form>
 
-		<div id="divPatientsGrid">
+		<div id="divAppointmentsGrid">
 			<%
 				AppointmentServiceImpl appointmentObj = new AppointmentServiceImpl();
 				out.print(appointmentObj.getAppointments());
