@@ -1,5 +1,6 @@
+<%@page import="com.caremarque.appointment.service.AppointmentServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
 
 <!DOCTYPE html>
@@ -18,6 +19,106 @@
 
 </head>
 <body>
+
+	<div class="container">
+
+		<form name="appointmentCreation" id="appointmentCreation"
+			method="POST" action="Appointment.jsp">
+
+			<div class="form-title">Add An Appointment</div>
+			<br /> <br />
+			<h4>Appointment Information</h4>
+
+			<div class="row">
+				<div class="col">
+					<label>Patient Id <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Your Id...!" name="patitentId"
+						id="patientId" class="form-control form-control-sm"><br />
+				</div>
+
+				<div class="col">
+					<label>Patient Name <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Your Name...!" name="patitentName"
+						id="patientName" class="form-control form-control-sm"><br />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<label>Mobile Number <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Your Number...!" name="phone"
+						id="phone" class="form-control form-control-sm"><br />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<label>Doctor Name <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Doctor Name...!" name="doctorName"
+						id="doctorName" class="form-control form-control-sm"><br />
+				</div>
+
+				<div class="col">
+					<label>Specialization <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Any Specialization...!"
+						name="specialization" id="specialization"
+						class="form-control form-control-sm"><br />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<label>Hospital Id <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Hospital Id...!" name="hospitalId"
+						id="hospitalId" class="form-control form-control-sm"><br />
+				</div>
+
+				<div class="col">
+					<label>Hospital Name <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Hospital Name...!"
+						name="hospitalName" id="hospitalName"
+						class="form-control form-control-sm"><br />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<label>Appointment Date <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Appointment Date...!"
+						name="appointmentDate" id="appointmentDate"
+						class="form-control form-control-sm"><br />
+				</div>
+
+				<div class="col">
+					<label>Appointment Time <label_1>*</label_1></label><br /> <input
+						type="text" placeholder="Enter Appointment Time...!"
+						name="appointmentTime" id="appointmentTime"
+						class="form-control form-control-sm"><br />
+				</div>
+			</div>
+
+
+			<input id="btnSave" name="btnSave" type="button"
+				value="Add Appointment" class="btn btn-primary"> <input
+				type="hidden" id="hidAppointmentIdSave" name="hidAppointmentIdSave"
+				value=""> <br> <br>
+
+			<div id="alertSuccess" class="alert alert-success"></div>
+			<div id="alertError" class="alert alert-danger"></div>
+
+		</form>
+
+		<div id="divPatientsGrid">
+			<%
+				AppointmentServiceImpl appointmentObj = new AppointmentServiceImpl();
+				out.print(appointmentObj.getAppointments());
+			%>
+		</div>
+
+
+	</div>
+
+
 
 </body>
 </html>
