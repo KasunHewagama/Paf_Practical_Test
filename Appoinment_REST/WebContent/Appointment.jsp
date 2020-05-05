@@ -16,6 +16,7 @@
 <!-- JS -->
 <script src="Components/jquery-3.2.1.min.js"></script>
 <script src="Components/appointment.js" type="text/javascript"></script>
+<script src="Components/popper.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -32,13 +33,13 @@
 			<div class="row">
 				<div class="col">
 					<label>Patient Id <label_1>*</label_1></label><br /> <input
-						type="text" placeholder="Enter Your Id...!" name="patitentId"
+						type="text" placeholder="Enter Your Id...!" name="patientId"
 						id="patientId" class="form-control form-control-sm"><br />
 				</div>
 
 				<div class="col">
 					<label>Patient Name <label_1>*</label_1></label><br /> <input
-						type="text" placeholder="Enter Your Name...!" name="patitentName"
+						type="text" placeholder="Enter Your Name...!" name="patientName"
 						id="patientName" class="form-control form-control-sm"><br />
 				</div>
 			</div>
