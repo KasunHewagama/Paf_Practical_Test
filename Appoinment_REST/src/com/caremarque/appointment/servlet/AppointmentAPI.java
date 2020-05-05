@@ -18,12 +18,15 @@ import com.caremarque.appointment.service.AppointmentServiceImpl;
 public class AppointmentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	AppointmentServiceImpl appointmentServiceImpl = new AppointmentServiceImpl();
+	
 	public AppointmentAPI() {
 
 	}
 
 	private static Map getParasMap(HttpServletRequest request) {
 		
+		System.out.println("getParasMap");
 		Map<String, String> map = new HashMap<String, String>();
 		
 		try {
@@ -33,7 +36,9 @@ public class AppointmentAPI extends HttpServlet {
 		scanner.close();
 		
 		String[] params = queryString.split("&");
+		
 		for(String param : params) {
+			
 			String[] a = param.split("=");
 			map.put(a[0], a[1]);
 		}
@@ -44,22 +49,26 @@ public class AppointmentAPI extends HttpServlet {
 		return map;
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
+
+
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
+
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("AppointmentAPI");
+		
+		System.out.println("AppointmentAPI POST Method");
+		
 		Appointment appointment = new Appointment();
+		
 		appointment.setPatientId(request.getParameter("patientId"));
+		
+		System.out.println("Patient ID in api : " + request.getParameter("patientId"));
+		
 		appointment.setPatientName(request.getParameter("patientName"));
 		appointment.setPhone(request.getParameter("phone"));
 		appointment.setDoctorName(request.getParameter("doctorName"));
@@ -70,22 +79,22 @@ public class AppointmentAPI extends HttpServlet {
 		appointment.setAppointmentTime(request.getParameter("appointmentTime"));
 		appointment.setAppointmentStatus(request.getParameter("appointmentStatus"));
 		
-		AppointmentServiceImpl appointmentServiceImpl = new AppointmentServiceImpl();
+		
 		String output = appointmentServiceImpl.createAppointment(appointment);
 		System.out.println(output);
 		response.getWriter().write(output);
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doPut(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
+
+
+	
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AppointmentServiceImpl appointmentServiceImpl = new AppointmentServiceImpl();
 		
 		Map paras = getParasMap(request);
-		System.out.println("Appointment Id: " + paras.get("hidAppointmentIDSave").toString());
-		System.out.println("Patient Name: " + paras.get("patientIame").toString());
+		
+		System.out.println("Appointment API put method");
+		System.out.println("Appointment Id: " + paras.get("hidAppointmentIdSave").toString());
+		System.out.println("Patient Name: " + paras.get("patientName").toString());
 		/*
 		 * System.out.println("Patient Name: " + paras.get("patientName").toString());
 		 * System.out.println("Phone: " + paras.get("phone").toString());
@@ -103,7 +112,7 @@ public class AppointmentAPI extends HttpServlet {
 		 */
 		
 		String output = appointmentServiceImpl.updateAppointment(
-				paras.get("hidAppointmentIDSave").toString(),
+				paras.get("hidAppointmentIdSave").toString(),
 				paras.get("patientId").toString(),
 				paras.get("patientName").toString(),
 				paras.get("phone").toString(),
@@ -118,21 +127,17 @@ public class AppointmentAPI extends HttpServlet {
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.servlet.http.HttpServlet#doDelete(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
+	
+	
+	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AppointmentServiceImpl appointmentServiceImpl = new AppointmentServiceImpl();
 		
 		Map paras = getParasMap(request);
 		
 		String output = appointmentServiceImpl.cancelAppointment(paras.get("appointmentId").toString());
-
+		
 		response.getWriter().write(output);
 		
 	}
-	
-	
 	
 }

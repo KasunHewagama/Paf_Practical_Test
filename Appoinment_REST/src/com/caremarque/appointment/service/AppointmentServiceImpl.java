@@ -124,15 +124,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			PreparedStatement pStatement = con.prepareStatement(query);
 			ResultSet rs = pStatement.executeQuery();
 			
-			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
-					+ "<tr><th scope=\'col\'>Appointment Id</th><th scope=\'col\'>Patient Id</th> "
-					+ "<th scope=\'col\'>Patient Name</th><th scope=\'col\'>Phone</th> "
-					+ "<th scope=\'col\'>Doctor Name</th><th scope=\'col\'>Specialization</th> "
-					+ "<th scope=\'col\'>Hospital Id</th><th scope=\'col\'>Hospital Name</th> "
-					+ "<th scope=\'col\'>Appointment Date</th><th scope=\'col\'>Appointment Time</th> "
-					+ "<th scope=\'col\'>Last Update Date</th><th scope=\'col\'>Last Update Time</th> "
-					+ "<th scope=\'col\'>Appointment Status</th>" 
-					+ "<th scope=\'col\'>Update</th><th scope=\'col\'>Delete</th></tr>";
+			output ="<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px\">" +
+					 "<tr style=\"background-color:#000099; color:#ffffff;\"><th>Appointment Id</th>" + "<th>Patient Id</th>" + "<th>Patient_Name</th>" +
+					 "<th>Phone</th>" + "<th>Doctor_Name</th>" + "<th>Specialization</th>" + "<th>Hospital_Id</th>" +
+					 "<th>Hospital_Name</th>" + "<th>Appointment_Date</th>" + "<th>Appointment_Time</th>" + "<th>Last_Update_Date</th>" + "<th>Last_Update_Time</th>" + "<th>Appointment_Status</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 			
 			while(rs.next()) {
 				Appointment appointment = new Appointment();
@@ -278,63 +273,46 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
 			
 	
-			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
-					+ "<tr><th scope=\'col\'>Appointment Id</th><th scope=\'col\'>Patient Id</th> "
-					+ "<th scope=\'col\'>Patient_Name</th><th scope=\'col\'>Phone</th> "
-					+ "<th scope=\'col\'>Doctor_Name</th><th scope=\'col\'>Specialization</th> "
-					+ "<th scope=\'col\'>Hospital_Id</th><th scope=\'col\'>Hospital_Name</th> "
-					+ "<th scope=\'col\'>Appointment_Date</th><th scope=\'col\'>Appointment_Time</th> "
-					+ "<th scope=\'col\'>Last_Update_Date</th><th scope=\'col\'>Last_Update_Time</th> "
-					+ "<th scope=\'col\'>Appointment_Status</th>" 
-					+ "<th scope=\'col\'>Update</th><th scope=\'col\'>Delete</th></tr>";
+			output ="<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px\">" +
+					 "<tr style=\"background-color:#000099; color:#ffffff;\"><th>Appointment Id</th>" + "<th>Patient Id</th>" + "<th>Patient_Name</th>" +
+					 "<th>Phone</th>" + "<th>Doctor_Name</th>" + "<th>Specialization</th>" + "<th>Hospital_Id</th>" +
+					 "<th>Hospital_Name</th>" + "<th>Appointment_Date</th>" + "<th>Appointment_Time</th>" + "<th>Last_Update_Date</th>" + "<th>Last_Update_Time</th>" + "<th>Appointment_Status</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
 			while (rs.next()) {
-				Appointment appointment = new Appointment();
-				appointment.setPatientId(rs.getString(Constants.COLUMN_INDEX_ONE));
-				appointment.setPatientName(rs.getString(Constants.COLUMN_INDEX_TWO));
-				appointment.setPhone(rs.getString(Constants.COLUMN_INDEX_THREE));
-				appointment.setDoctorName(rs.getString(Constants.COLUMN_INDEX_FOUR));
-				appointment.setSpecialization(rs.getString(Constants.COLUMN_INDEX_FIVE));
-				appointment.setHospitalId(rs.getString(Constants.COLUMN_INDEX_SIX));
-				appointment.setHospitalName(rs.getString(Constants.COLUMN_INDEX_SEVEN));
-				appointment.setAppointmentDate(rs.getString(Constants.COLUMN_INDEX_EIGHT));
-				appointment.setAppointmentTime(rs.getString(Constants.COLUMN_INDEX_NINE));
-				appointment.setLastUpdateDate(rs.getString(Constants.COLUMN_INDEX_TEN));
-				appointment.setLastUpdateTime(rs.getString(Constants.COLUMN_INDEX_ELEVEN));
-				appointment.setAppointmentStatus(rs.getString(Constants.COLUMN_INDEX_TWELVE));
-				arrayList.add(appointment);
+				String appointmentId = rs.getString("appointmentId");
+				String patientId = rs.getString("patientId");
+				String patientName = rs.getString("patientName");
+				String phone = rs.getString("phone");
+				String doctorName = rs.getString("doctorName");
+				String specialization = rs.getString("specialization");
+				String hospitalId = rs.getString("hospitalId");
+				String hospitalName = rs.getString("hospitalName");
+				String appointmentDate = rs.getString("appointmentDate");	
+				String appointmentTime = rs.getString("appointmentTime");
+				String lastUpdateDate = rs.getString("lastUpdateDate");
+				String lastUpdateTime = rs.getString("lastUpdateTime");
+				String appointmentStatus = rs.getString("appointmentStatus");
 				
 
-				output += "<tr><td style=\'color:#008AD9;font-weight: bold;\'>"
-						+ "<input id='hidAppointmentIdUpdate' name = 'hidAppointmentIdUpdate' type='hidden' value='" +rs.getString(Constants.COLUMN_INDEX_ONE)+"'>"
-						+ rs.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THREE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_FOUR) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_FIVE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_SIX) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_SEVEN) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_EIGHT) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_NINE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TEN) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_ELEVEN) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWELVE) + "</td>";
-				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_THIRTEEN) + "</td>";
-				
-				/*
-				 * output += "<td>" +
-				 * "<input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' style= \"font-size: 14px;\">"
-				 * + "</td>" + "<td>" +
-				 * "<input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' style= \"font-size: 14px;\" data-appointmentid='"
-				 * + rs.getString(Constants.COLUMN_INDEX_ONE) + "'>" + "</td>" + "</tr>";
-				 */
-				
-				
-				output += "<td><input name = \'btnUpdate\' type = \'button\' value = \'Update\' class = \'btnUpdate btn btn-success btn-sm\'></td>"
-						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentId = '"+ rs.getString(Constants.COLUMN_INDEX_ONE) +"'>" 
+				System.out.println("GetAllAppointments : AppointmentId : " + appointmentId);
+
+				output += "<tr><td><input id = \"hidAppointmentIdUpdate\" name = \"hidAppointmentIdUpdate\" type=\"hidden\" value = '" + appointmentId + "'>" + appointmentId + "</td>";
+				output += "<td>" + patientId + "</td>";
+				output += "<td>" + patientName + "</td>";
+				output += "<td>" + phone + "</td>";
+				output += "<td>" + doctorName + "</td>";
+				output += "<td>" + specialization + "</td>";
+				output += "<td>" + hospitalId + "</td>";
+				output += "<td>" + hospitalName + "</td>";
+				output += "<td>" + appointmentDate + "</td>";
+				output += "<td>" + appointmentTime + "</td>";
+				output += "<td>" + lastUpdateDate + "</td>";
+				output += "<td>" + lastUpdateTime + "</td>";
+				output += "<td>" + appointmentStatus + "</td>";
+				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
+						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentId = '"+ appointmentId +"'>" 
 						+ "</td></tr>";
-				
-				
+								
 				
 			}
 			
@@ -371,7 +349,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public String updateAppointment(String appointmnetId, String patientId, String patientName, String phone, String doctorName, String specialization, String hospitalId,String hospitalName, String appointmentDate, String appointmentTime) {
+	public String updateAppointment(String appointmentId, String patientId, String patientName, String phone, String doctorName, String specialization, String hospitalId,String hospitalName, String appointmentDate, String appointmentTime) {
 		
 		String output = "";
 		PreparedStatement pStatement = null;
@@ -379,28 +357,28 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		try {
 			con = DBConnection.getDBConnection();
 			
-			String query = "UPDATE appointment SET appointmentId = ?, patientId = ?, patientName = ?, phone = ?, doctorName = ?, specialization = ?, hospitalId = ?, hospitalName = ?, appointmentDate = ?, appointmentTime = ?, lastUpdateDate = ?, lastUpdateTime = ?, appointmentStatus = ? WHERE appointmentId = ?";
+			String query = "UPDATE appointment SET patientId = ?, patientName = ?, phone = ?, doctorName = ?, specialization = ?, hospitalId = ?, hospitalName = ?, appointmentDate = ?, appointmentTime = ?, lastUpdateDate = ?, lastUpdateTime = ?, appointmentStatus = ? WHERE appointmentId = ?";
 			
 			pStatement = con.prepareStatement(query);
 			
-			pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmnetId);
-			pStatement.setString(Constants.COLUMN_INDEX_TWO, patientId);
-			pStatement.setString(Constants.COLUMN_INDEX_THREE, patientName);
-			pStatement.setString(Constants.COLUMN_INDEX_FOUR, phone);
-			pStatement.setString(Constants.COLUMN_INDEX_FIVE, doctorName);
-			pStatement.setString(Constants.COLUMN_INDEX_SIX, specialization);
-			pStatement.setString(Constants.COLUMN_INDEX_SEVEN, hospitalId);
-			pStatement.setString(Constants.COLUMN_INDEX_EIGHT, hospitalName);
+			//pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmnetId);
+			pStatement.setString(Constants.COLUMN_INDEX_ONE, patientId);
+			pStatement.setString(Constants.COLUMN_INDEX_TWO, patientName);
+			pStatement.setString(Constants.COLUMN_INDEX_THREE, phone);
+			pStatement.setString(Constants.COLUMN_INDEX_FOUR, doctorName);
+			pStatement.setString(Constants.COLUMN_INDEX_FIVE, specialization);
+			pStatement.setString(Constants.COLUMN_INDEX_SIX, hospitalId);
+			pStatement.setString(Constants.COLUMN_INDEX_SEVEN, hospitalName);
+			pStatement.setString(Constants.COLUMN_INDEX_EIGHT, patientId);
 			pStatement.setString(Constants.COLUMN_INDEX_NINE, patientId);
-			pStatement.setString(Constants.COLUMN_INDEX_TEN, patientId);
-			pStatement.setString(Constants.COLUMN_INDEX_ELEVEN, LocalDate.now().toString());
-			pStatement.setString(Constants.COLUMN_INDEX_TWELVE, LocalTime.now().toString());
-			pStatement.setString(Constants.COLUMN_INDEX_THIRTEEN, "Pending");
-			pStatement.setString(Constants.COLUMN_INDEX_FOURTEEN, appointmnetId);
+			pStatement.setString(Constants.COLUMN_INDEX_TEN, LocalDate.now().toString());
+			pStatement.setString(Constants.COLUMN_INDEX_ELEVEN, LocalTime.now().toString());
+			pStatement.setString(Constants.COLUMN_INDEX_TWELVE, "Pending");
+			pStatement.setString(Constants.COLUMN_INDEX_THIRTEEN, appointmentId);
 			
 			pStatement.execute();
 			
-			System.out.println("Update appointmentId : " + appointmnetId);
+			System.out.println("Update appointmentId : " + appointmentId);
 			
 			String newAppointment = getAppointments();
 			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}"; 
@@ -433,7 +411,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	}
 
 	@Override
-	public String cancelAppointment(String appointmnetId) {
+	public String cancelAppointment(String appointmentId) {
 		
 		String output = "";
 		PreparedStatement pStatement = null;
@@ -445,7 +423,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 			pStatement = con.prepareStatement(query);
 			
-			pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmnetId);
+			pStatement.setString(Constants.COLUMN_INDEX_ONE, appointmentId);
 			pStatement.execute();
 			
 			String newAppointment = getAppointments(); 

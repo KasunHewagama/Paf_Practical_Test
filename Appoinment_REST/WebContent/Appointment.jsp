@@ -1,4 +1,5 @@
-<%@page import="com.caremarque.appointment.service.AppointmentServiceImpl"%>
+<%@page
+	import="com.caremarque.appointment.service.AppointmentServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -15,7 +16,7 @@
 <!-- <link rel="stylesheet" href="Views/bootstrap-datepicker3.css" /> -->
 
 <!-- JS -->
-<script src="Components/jquery-3.5.0.min.js"></script>
+<script src="Components/jquery-3.2.1.min.js"></script>
 <script src="Components/appointment.js" type="text/javascript"></script>
 <!-- <script src="Components/popper.min.js" type="text/javascript"></script> -->
 <!-- <script src="Components/bootstrap-datepicker.min.js" type="text/javascript"></script> -->
@@ -106,11 +107,13 @@
 				value="Add Appointment" class="btn btn-primary"> <input
 				type="hidden" id="hidAppointmentIdSave" name="hidAppointmentIdSave"
 				value=""> <br> <br>
-
-			<div id="alertSuccess" class="alert alert-success"></div>
-			<div id="alertError" class="alert alert-danger"></div>
-
+		
 		</form>
+
+		<div id="alertSuccess" class="alert alert-success"></div>
+		<div id="alertError" class="alert alert-danger"></div>
+
+
 
 		<div id="divAppointmentsGrid">
 			<%
@@ -118,9 +121,9 @@
 				out.print(appointmentObj.getAppointments());
 			%>
 		</div>
-		
+
 	</div>
-	
+
 	<!-- <script>
 		$(document).ready(
 				function() {
