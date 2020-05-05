@@ -141,6 +141,7 @@ function onAppointmentDeleteComplete(response, status) {
 	}
 }
 
+
 // Client-Model
 function validateForm() {
 
