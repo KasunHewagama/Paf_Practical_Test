@@ -49,8 +49,7 @@ public class AppointmentAPI extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(request, response);
+		
 	}
 
 	/* (non-Javadoc)

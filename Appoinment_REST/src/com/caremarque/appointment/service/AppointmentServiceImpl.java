@@ -234,9 +234,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				arrayList.add(appointment);
 
 				
-				System.out.println("Data Retrieved from DB...!");
+				
 			}
 			
+			System.out.println("Data Retrieved from DB...!");
 			
 		
 		} catch (Exception e) {
@@ -261,7 +262,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	@Override
 	public String getAppointments() {
 
-		String output = null;
+		String output = "";
 		ResultSet rs = null;
 		
 		ArrayList<Appointment> arrayList = new ArrayList<Appointment>();
@@ -304,7 +305,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				arrayList.add(appointment);
 				
 
-				output += "<tr><td style=\"color:#008AD9;font-weight: bold;\">"
+				output += "<tr><td style=\'color:#008AD9;font-weight: bold;\'>"
 						+ "<input id='hidAppointmentIdUpdate' name = 'hidAppointmentIdUpdate' type='hidden' value='" +rs.getString(Constants.COLUMN_INDEX_ONE)+"'>"
 						+ rs.getString(Constants.COLUMN_INDEX_ONE) + "</td>";
 				output += "<td>" + rs.getString(Constants.COLUMN_INDEX_TWO) + "</td>";
@@ -329,13 +330,15 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				 */
 				
 				
-				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
+				output += "<td><input name = \'btnUpdate\' type = \'button\' value = \'Update\' class = \'btnUpdate btn btn-success btn-sm\'></td>"
 						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentId = '"+ rs.getString(Constants.COLUMN_INDEX_ONE) +"'>" 
 						+ "</td></tr>";
 				
 				
-				System.out.println("Data Retrieved from database...!");
+				
 			}
+			
+			System.out.println("Data Retrieved from database...!");
 
 			output += "</table>";
 
@@ -397,7 +400,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 			pStatement.execute();
 			
-			System.out.println("Update patintId : " + appointmnetId);
+			System.out.println("Update appointmentId : " + appointmnetId);
 			
 			String newAppointment = getAppointments();
 			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}"; 
