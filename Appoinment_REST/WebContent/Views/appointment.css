@@ -1,0 +1,39 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+form{
+	border: 1px solid #000099;
+	margin:20px;
+  	padding:20px;
+  	border-radius: 10px;
+}
+
+.form-title{
+	background-color:#000099;
+	color:#ffffff;
+	text-align:center; 
+	border-radius: 10px 10px 0 0; 
+	margin:  -20px; 
+	padding: 12px;
+	font-size: 18px;
+}	
+
+label_1{
+	color:#ff0000;
+}
+
+#btnSave{
+	margin-left:35%;
+	background-color:#000099; 
+	width: 30%;
+}
+
+h4{
+	font-weight: bold;
+}
+
+#divAppointmentsGrid{
+
+}
