@@ -61,19 +61,20 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			preparedStatement = con.prepareStatement(query);
 
 			appointment.setAppointmentId(appointmentId);
-			preparedStatement.setString(1, appointment.getAppointmentId());
-			preparedStatement.setString(2, appointment.getPatientId());
-			preparedStatement.setString(3, appointment.getPatientName());
-			preparedStatement.setString(4, appointment.getPhone());
-			preparedStatement.setString(5, appointment.getDoctorName());
-			preparedStatement.setString(6, appointment.getSpecialization());
-			preparedStatement.setString(7, appointment.getHospitalId());
-			preparedStatement.setString(8, appointment.getHospitalName());
-			preparedStatement.setString(9, appointment.getAppointmentDate());
-			preparedStatement.setString(10, appointment.getAppointmentTime());
-			preparedStatement.setString(11, LocalDate.now().toString());
-			preparedStatement.setString(12, LocalTime.now().toString());
-			preparedStatement.setString(13, appointment.getAppointmentStatus());
+			preparedStatement.setString(Constants.COLUMN_INDEX_ONE, appointment.getAppointmentId());
+			preparedStatement.setString(Constants.COLUMN_INDEX_TWO, appointment.getPatientId());
+			System.out.println(appointment.getPatientId());
+			preparedStatement.setString(Constants.COLUMN_INDEX_THREE, appointment.getPatientName());
+			preparedStatement.setString(Constants.COLUMN_INDEX_FOUR, appointment.getPhone());
+			preparedStatement.setString(Constants.COLUMN_INDEX_FIVE, appointment.getDoctorName());
+			preparedStatement.setString(Constants.COLUMN_INDEX_SIX, appointment.getSpecialization());
+			preparedStatement.setString(Constants.COLUMN_INDEX_SEVEN, appointment.getHospitalId());
+			preparedStatement.setString(Constants.COLUMN_INDEX_EIGHT, appointment.getHospitalName());
+			preparedStatement.setString(Constants.COLUMN_INDEX_NINE, appointment.getAppointmentDate());
+			preparedStatement.setString(Constants.COLUMN_INDEX_TEN, appointment.getAppointmentTime());
+			preparedStatement.setString(Constants.COLUMN_INDEX_ELEVEN, LocalDate.now().toString());
+			preparedStatement.setString(Constants.COLUMN_INDEX_TWELVE, LocalTime.now().toString());
+			preparedStatement.setString(Constants.COLUMN_INDEX_THIRTEEN, "Pending");
 
 			preparedStatement.executeUpdate();
 			
@@ -124,14 +125,14 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			ResultSet rs = pStatement.executeQuery();
 			
 			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
-					+ "<tr>" + "<th scope=\"col\">Appointment Id</th> " + "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient Name</th> " + "<th scope=\"col\">Phone</th> "
-					+ "<th scope=\"col\">Doctor Name</th> " + "<th scope=\"col\">Specialization</th> "
-					+ "<th scope=\"col\">Hospital Id</th> " + "<th scope=\"col\">Hospital Name</th> "
-					+ "<th scope=\"col\">Appointment Date</th> " + "<th scope=\"col\">Appointment Time</th> "
-					+ "<th scope=\"col\">Last Update Date</th> " + "<th scope=\"col\">Last Update Time</th> "
-					+ "<th scope=\"col\">Appointment Status</th>" 
-					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
+					+ "<tr><th scope=\'col\'>Appointment Id</th><th scope=\'col\'>Patient Id</th> "
+					+ "<th scope=\'col\'>Patient Name</th><th scope=\'col\'>Phone</th> "
+					+ "<th scope=\'col\'>Doctor Name</th><th scope=\'col\'>Specialization</th> "
+					+ "<th scope=\'col\'>Hospital Id</th><th scope=\'col\'>Hospital Name</th> "
+					+ "<th scope=\'col\'>Appointment Date</th><th scope=\'col\'>Appointment Time</th> "
+					+ "<th scope=\'col\'>Last Update Date</th><th scope=\'col\'>Last Update Time</th> "
+					+ "<th scope=\'col\'>Appointment Status</th>" 
+					+ "<th scope=\'col\'>Update</th><th scope=\'col\'>Delete</th></tr>";
 			
 			while(rs.next()) {
 				Appointment appointment = new Appointment();
@@ -277,14 +278,14 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 	
 			output = "<table class=\' table table-sm table-responsive\' style=\"font-family: 'Roboto', sans-serif\" > "
-					+ "<tr>" + "<th scope=\"col\">Appointment Id</th> " + "<th scope=\"col\">Patient Id</th> "
-					+ "<th scope=\"col\">Patient_Name</th> " + "<th scope=\"col\">Phone</th> "
-					+ "<th scope=\"col\">Doctor_Name</th> " + "<th scope=\"col\">Specialization</th> "
-					+ "<th scope=\"col\">Hospital_Id</th> " + "<th scope=\"col\">Hospital_Name</th> "
-					+ "<th scope=\"col\">Appointment_Date</th> " + "<th scope=\"col\">Appointment_Time</th> "
-					+ "<th scope=\"col\">Last_Update_Date</th> " + "<th scope=\"col\">Last_Update_Time</th> "
-					+ "<th scope=\"col\">Appointment_Status</th>" 
-					+ "<th scope=\"col\">Update</th>" + "<th scope=\"col\">Delete</th>" + "</tr>";
+					+ "<tr><th scope=\'col\'>Appointment Id</th><th scope=\'col\'>Patient Id</th> "
+					+ "<th scope=\'col\'>Patient_Name</th><th scope=\'col\'>Phone</th> "
+					+ "<th scope=\'col\'>Doctor_Name</th><th scope=\'col\'>Specialization</th> "
+					+ "<th scope=\'col\'>Hospital_Id</th><th scope=\'col\'>Hospital_Name</th> "
+					+ "<th scope=\'col\'>Appointment_Date</th><th scope=\'col\'>Appointment_Time</th> "
+					+ "<th scope=\'col\'>Last_Update_Date</th><th scope=\'col\'>Last_Update_Time</th> "
+					+ "<th scope=\'col\'>Appointment_Status</th>" 
+					+ "<th scope=\'col\'>Update</th><th scope=\'col\'>Delete</th></tr>";
 
 			while (rs.next()) {
 				Appointment appointment = new Appointment();
