@@ -20,7 +20,6 @@ public class Appointment {
 	private String appointmentStatus;
 
 	public Appointment() {
-		// TODO Auto-generated constructor stub
 		super();
 	}
 

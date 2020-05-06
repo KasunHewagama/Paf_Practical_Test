@@ -13,13 +13,10 @@
 <!-- CSS -->
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <link rel="stylesheet" href="Views/appointment.css">
-<!-- <link rel="stylesheet" href="Views/bootstrap-datepicker3.css" /> -->
 
 <!-- JS -->
 <script src="Components/jquery-3.2.1.min.js"></script>
 <script src="Components/appointment.js" type="text/javascript"></script>
-<!-- <script src="Components/popper.min.js" type="text/javascript"></script> -->
-<!-- <script src="Components/bootstrap-datepicker.min.js" type="text/javascript"></script> -->
 
 
 </head>

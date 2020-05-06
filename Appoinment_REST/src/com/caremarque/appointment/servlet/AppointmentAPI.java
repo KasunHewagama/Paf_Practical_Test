@@ -96,21 +96,6 @@ public class AppointmentAPI extends HttpServlet {
 		System.out.println("Appointment API put method");
 		System.out.println("Appointment Id: " + paras.get("hidAppointmentIdSave").toString());
 		System.out.println("Patient Name: " + paras.get("patientName").toString());
-		/*
-		 * System.out.println("Patient Name: " + paras.get("patientName").toString());
-		 * System.out.println("Phone: " + paras.get("phone").toString());
-		 * System.out.println("Doctor Name: " + paras.get("doctorName").toString());
-		 * System.out.println("Specialization: " +
-		 * paras.get("specialization").toString()); System.out.println("Hospital Id: " +
-		 * paras.get("hospitalId").toString()); System.out.println("Hospital Name: " +
-		 * paras.get("hospitalName").toString());
-		 * System.out.println("Appointment Date: " +
-		 * paras.get("appointmentDate").toString());
-		 * System.out.println("Appointment Time: " +
-		 * paras.get("appointmentTime").toString());
-		 * System.out.println("Appointment Status: " +
-		 * paras.get("appointmentStatus").toString());
-		 */
 		
 		String output = appointmentServiceImpl.updateAppointment(
 				paras.get("hidAppointmentIdSave").toString(),

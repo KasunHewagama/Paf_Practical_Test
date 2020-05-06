@@ -7,7 +7,7 @@ public class CommonUtils {
 		//TODO: Here we can implement some common functions used in though out the project 
 	
 		//*************************Appointment ID Generator*************************
-		//It takes the all the values from the payment table and get the count then increase the count by 1
+		//It takes the all the values from the appointment table and get the count then increase the count by 1
 		//and create next id with the given prefix
 	
 	public static String generateAppointmentIDs(ArrayList<String> arrayList) {

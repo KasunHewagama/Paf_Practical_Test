@@ -41,7 +41,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	
 	@Override
 	public String createAppointment(Appointment appointment) {
-		// return "Appointment created successfully...!";
+		
 
 		String output = null;
 		PreparedStatement preparedStatement = null;
@@ -83,12 +83,10 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			
 			String newAppointment = getAppointments();
 
-			//output = "Appointment No:" + appointmentId + " is Successfully Inserted...!";
 			output = "{\"status\":\"success\", \"data\": \"" + newAppointment + "\"}";
 
 		} catch (Exception e) {
 
-			//output = "Error when Inserting the Appointment...!";
 			output = "{\"status\" : \"error\", \"data\" : \"Error while entering to the system..!\"}";
 			System.err.println(e.getMessage());
 			log.log(Level.SEVERE, e.getMessage());

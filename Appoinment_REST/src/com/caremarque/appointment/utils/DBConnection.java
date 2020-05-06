@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-	// If there is any issue you can change it accordingly
-	// Implemented with Singleton Pattern
 
 	private static Connection connection;
 
