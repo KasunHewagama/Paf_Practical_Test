@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -26,6 +27,8 @@ import com.mysql.cj.log.Log;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+
+import jdk.nashorn.internal.parser.DateParser;
 
 public class AppointmentServiceImpl implements IAppointmentService {
 
@@ -273,8 +276,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
 			
 	
-			output ="<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px\">" +
-					 "<tr style=\"background-color:#000099; color:#ffffff;\"><th>Appointment Id</th>" + "<th>Patient Id</th>" + "<th>Patient_Name</th>" +
+			output ="<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px; color:#ffffff; background-color:#16817a\">" +
+					 "<tr style=\"background-color:#f07b3f; color:#ffffff;\"><th>Appointment_Id</th>" + "<th>Patient_Id</th>" + "<th>Patient_Name</th>" +
 					 "<th>Phone</th>" + "<th>Doctor_Name</th>" + "<th>Specialization</th>" + "<th>Hospital_Id</th>" +
 					 "<th>Hospital_Name</th>" + "<th>Appointment_Date</th>" + "<th>Appointment_Time</th>" + "<th>Last_Update_Date</th>" + "<th>Last_Update_Time</th>" + "<th>Appointment_Status</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
@@ -310,7 +313,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				output += "<td>" + lastUpdateTime + "</td>";
 				output += "<td>" + appointmentStatus + "</td>";
 				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
-						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentId = '"+ appointmentId +"'>" 
+						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentid = '"+ appointmentId +"'>" 
 						+ "</td></tr>";
 								
 				
@@ -369,8 +372,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			pStatement.setString(Constants.COLUMN_INDEX_FIVE, specialization);
 			pStatement.setString(Constants.COLUMN_INDEX_SIX, hospitalId);
 			pStatement.setString(Constants.COLUMN_INDEX_SEVEN, hospitalName);
-			pStatement.setString(Constants.COLUMN_INDEX_EIGHT, patientId);
-			pStatement.setString(Constants.COLUMN_INDEX_NINE, patientId);
+			pStatement.setString(Constants.COLUMN_INDEX_EIGHT, appointmentDate);
+			pStatement.setString(Constants.COLUMN_INDEX_NINE, appointmentTime);
 			pStatement.setString(Constants.COLUMN_INDEX_TEN, LocalDate.now().toString());
 			pStatement.setString(Constants.COLUMN_INDEX_ELEVEN, LocalTime.now().toString());
 			pStatement.setString(Constants.COLUMN_INDEX_TWELVE, "Pending");
@@ -494,29 +497,6 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		System.out.println(arrayList.size());
 		return arrayList;
 	}
-	
-	
-	public String createPayment(String appointmentId) {
-		
-		Client client = Client.create();
-		ArrayList<Appointment> appList = new ArrayList<Appointment>();
-		appList = getAppointmentByID(appointmentId);
-		
-		WebResource webResource = client.resource("http://localhost:8088/Payment_REST/myService/Payment/fromAppointment");
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonInput ="";
-		try {
-			jsonInput = mapper.writeValueAsString(appList.get(0));
-			System.out.println("JSON: " + jsonInput);
-		} catch (Exception e) {
-			log.log(Level.SEVERE, e.getMessage());
-		}
-		
-		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, jsonInput);
-		return response.getEntity(String.class);
-	}
-	
-	
 	
 
 }

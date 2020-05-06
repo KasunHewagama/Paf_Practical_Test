@@ -76,27 +76,16 @@ function onAppointmentComplete(response, status) {
 
 // Update ======================================
 $(document).on("click",".btnUpdate", function(event) {
-					$("#hidAppointmentIdSave").val(
-							$(this).closest("tr").find('#hidAppointmentIdUpdate')
-									.val());
-					$("#patientId").val(
-							$(this).closest("tr").find('td:eq(1)').text());
-					$("#patientName").val(
-							$(this).closest("tr").find('td:eq(2)').text());
-					$("#phone").val(
-							$(this).closest("tr").find('td:eq(3)').text());
-					$("#doctorName").val(
-							$(this).closest("tr").find('td:eq(4)').text());
-					$("#specialization").val(
-							$(this).closest("tr").find('td:eq(5)').text());
-					$("#hospitalId").val(
-							$(this).closest("tr").find('td:eq(6)').text());
-					$("#hospitalName").val(
-							$(this).closest("tr").find('td:eq(7)').text());
-					$("#appointmentDate").val(
-							$(this).closest("tr").find('td:eq(8)').text());
-					$("#appointmentTime").val(
-							$(this).closest("tr").find('td:eq(9)').text());
+					$("#hidAppointmentIdSave").val($(this).closest("tr").find('#hidAppointmentIdUpdate').val());
+					$("#patientId").val($(this).closest("tr").find('td:eq(1)').text());
+					$("#patientName").val($(this).closest("tr").find('td:eq(2)').text());
+					$("#phone").val($(this).closest("tr").find('td:eq(3)').text());
+					$("#doctorName").val($(this).closest("tr").find('td:eq(4)').text());
+					$("#specialization").val($(this).closest("tr").find('td:eq(5)').text());
+					$("#hospitalId").val($(this).closest("tr").find('td:eq(6)').text());
+					$("#hospitalName").val($(this).closest("tr").find('td:eq(7)').text());
+					$("#appointmentDate").val($(this).closest("tr").find('td:eq(8)').text());
+					$("#appointmentTime").val($(this).closest("tr").find('td:eq(9)').text());
 
 				});
 
@@ -106,7 +95,7 @@ $(document).on("click", ".btnRemove", function(event) {
 	$.ajax({
 		url : "AppointmentAPI",
 		type : "DELETE",
-		data : "appointmentId=" + $(this).data("appointmentId"),
+		data : "appointmentId=" + $(this).data("appointmentid"),
 		dataType : "text",
 		complete : function(response, status) {
 

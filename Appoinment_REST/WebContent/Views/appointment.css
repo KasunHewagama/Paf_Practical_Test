@@ -1,24 +1,29 @@
 body{
-	background-color:#888888;
+	background-color:#2d4059;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
 }
 
 form{
-	border: 1px solid #000099;
+	border: 1px solid #ea5455;
 	margin:20px;
   	padding:20px;
   	border-radius: 10px;
 }
 
 .form-title{
-	background-color:#000099;
+	background-color:#ea5455;
 	color:#ffffff;
 	text-align:center; 
 	border-radius: 10px 10px 0 0; 
 	margin:  -20px; 
 	padding: 12px;
 	font-size: 18px;
+}
+
+label{
+	font-weight: bold;
+	color:#ffffff;
 }	
 
 label_1{
@@ -27,14 +32,16 @@ label_1{
 
 #btnSave{
 	margin-left:35%;
-	background-color:#000099; 
+	background-color:#ea5455;
+	border-color:#ea5455;
 	width: 30%;
 }
 
 h4{
 	font-weight: bold;
+	color:#ffffff;
 }
 
 #divAppointmentsGrid{
-
+	
 }
