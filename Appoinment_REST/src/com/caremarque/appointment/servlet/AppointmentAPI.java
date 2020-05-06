@@ -121,7 +121,7 @@ public class AppointmentAPI extends HttpServlet {
 				paras.get("hospitalId").toString(),
 				paras.get("hospitalName").toString(),
 				paras.get("appointmentDate").toString(),
-				paras.get("appointmentTime").toString());
+				paras.get("appointmentTime").toString().replace("%3A", ":"));
 		
 		response.getWriter().write(output);
 		
