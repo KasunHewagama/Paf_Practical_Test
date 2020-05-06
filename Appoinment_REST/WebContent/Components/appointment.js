@@ -149,7 +149,7 @@ function validateForm() {
 		return "Insert Patient Name...!";
 	}
 	
-	var letterReg1 = /^[A-Za-z]+$/;
+	var letterReg1 = /^[A-Za-z\s]+$/;
 	var tmpfName1 =  $("#patientName").val().trim();
 	if(!tmpfName1.match(letterReg1)){
 		return "Patient Name must have alphabetic charaters only...!";
@@ -171,7 +171,7 @@ function validateForm() {
 		return "Insert Doctor Name...!";
 	}
 	
-	var letterReg2 = /^[A-Za-z]+$/;
+	var letterReg2 = /^[A-Za-z\s]+$/;
 	var tmpfName2 =  $("#doctorName").val().trim();
 	if(!tmpfName2.match(letterReg2)){
 		return "Doctor Name must have alphabetic charaters only...!";
@@ -182,7 +182,7 @@ function validateForm() {
 		return "Insert Specialization...!";
 	}
 	
-	var letterReg3 = /^[A-Za-z]+$/;
+	var letterReg3 = /^[A-Za-z\s]+$/;
 	var tmpfName3 =  $("#specialization").val().trim();
 	if(!tmpfName3.match(letterReg3)){
 		return "Specialization must have alphabetic charaters only...!";
@@ -204,7 +204,7 @@ function validateForm() {
 		return "Insert Hospital Name...!";
 	}
 	
-	var letterReg4 = /^[A-Za-z]+$/;
+	var letterReg4 = /^[A-Za-z\s]+$/;
 	var tmpfName4 =  $("#hospitalName").val().trim();
 	if(!tmpfName4.match(letterReg4)){
 		return "Hospital Name must have alphabetic charaters only...!";

@@ -115,12 +115,12 @@ public class AppointmentAPI extends HttpServlet {
 		String output = appointmentServiceImpl.updateAppointment(
 				paras.get("hidAppointmentIdSave").toString(),
 				paras.get("patientId").toString(),
-				paras.get("patientName").toString(),
+				paras.get("patientName").toString().replace("+", " "),
 				paras.get("phone").toString(),
-				paras.get("doctorName").toString(),
-				paras.get("specialization").toString(),
+				paras.get("doctorName").toString().replace("+", " "),
+				paras.get("specialization").toString().replace("+", " "),
 				paras.get("hospitalId").toString(),
-				paras.get("hospitalName").toString(),
+				paras.get("hospitalName").toString().replace("+", " "),
 				paras.get("appointmentDate").toString(),
 				paras.get("appointmentTime").toString().replace("%3A", ":"));
 		

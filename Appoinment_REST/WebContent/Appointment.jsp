@@ -89,14 +89,14 @@
 			<div class="row">
 				<div class="col">
 					<label>Appointment Date <label_1>*</label_1></label><br /> <input
-						type="text" placeholder="Enter Appointment Date...!"
+						type="date" placeholder="Enter Appointment Date...!"
 						name="appointmentDate" id="appointmentDate"
 						class="form-control form-control-sm"><br />
 				</div>
 
 				<div class="col">
 					<label>Appointment Time <label_1>*</label_1></label><br /> <input
-						type="text" placeholder="Enter Appointment Time...!"
+						type="time" placeholder="Enter Appointment Time...!"
 						name="appointmentTime" id="appointmentTime"
 						class="form-control form-control-sm"><br />
 				</div>
