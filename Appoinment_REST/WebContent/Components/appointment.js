@@ -49,7 +49,7 @@ function onAppointmentComplete(response, status) {
 
 		if (resultSet.status.trim() == "success") {
 
-			$("#alertSuccess").text("Successfully saved..!");
+			$("#alertSuccess").text("Successfully Created...!");
 			$("#alertSuccess").show();
 
 			$("#divAppointmentsGrid").html(resultSet.data);
@@ -61,11 +61,11 @@ function onAppointmentComplete(response, status) {
 		}
 
 	} else if (status == "error") {
-		$("#alertError").text("Error while saving.");
+		$("#alertError").text("Error while saving...!");
 		$("#alertError").show();
 
 	} else {
-		$("#alertError").text("Unknown error while saving..");
+		$("#alertError").text("Unknown error while saving...!");
 		$("#alertError").show();
 	}
 
@@ -111,7 +111,7 @@ function onAppointmentDeleteComplete(response, status) {
 
 		if (resultSet.status.trim() == "success") {
 
-			$("#alertSuccess").text("Successfully deleted..!");
+			$("#alertSuccess").text("Successfully Deleted...!");
 			$("#alertSuccess").show();
 
 			$("#divAppointmentsGrid").html(resultSet.data);
@@ -122,10 +122,10 @@ function onAppointmentDeleteComplete(response, status) {
 		}
 
 	} else if (status == "error") {
-		$("#alertError").text("Error while deleting..!");
+		$("#alertError").text("Error while deleting...!");
 		$("#alertError").show();
 	} else {
-		$("#alertError").text("Unknown error while deleting..!");
+		$("#alertError").text("Unknown error while deleting...!");
 		$("#alertError").show();
 	}
 }
@@ -152,7 +152,7 @@ function validateForm() {
 	var letterReg1 = /^[A-Za-z]+$/;
 	var tmpfName1 =  $("#patientName").val().trim();
 	if(!tmpfName1.match(letterReg1)){
-		return "Doctor Name must have alphabetic charaters only...!";
+		return "Patient Name must have alphabetic charaters only...!";
 	}
 	
 	

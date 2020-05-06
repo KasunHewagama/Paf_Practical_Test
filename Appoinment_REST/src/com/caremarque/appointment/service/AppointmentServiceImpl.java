@@ -276,8 +276,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
 			
 	
-			output ="<table class = \"table table-striped table-responsive\" style=\"width:120%; margin-left: -40px; color:#ffffff; background-color:#16817a\">" +
-					 "<tr style=\"background-color:#f07b3f; color:#ffffff;\"><th>Appointment_Id</th>" + "<th>Patient_Id</th>" + "<th>Patient_Name</th>" +
+			output ="<table class = 'table table-striped table-responsive' style='width:120%; margin-left: -40px; color:#ffffff; background-color:#16817a'>" +
+					 "<tr style='background-color:#f07b3f; color:#ffffff;'><th>Appointment_Id</th>" + "<th>Patient_Id</th>" + "<th>Patient_Name</th>" +
 					 "<th>Phone</th>" + "<th>Doctor_Name</th>" + "<th>Specialization</th>" + "<th>Hospital_Id</th>" +
 					 "<th>Hospital_Name</th>" + "<th>Appointment_Date</th>" + "<th>Appointment_Time</th>" + "<th>Last_Update_Date</th>" + "<th>Last_Update_Time</th>" + "<th>Appointment_Status</th>" + "<th>Update</th>" + "<th>Remove</th></tr>";
 
@@ -299,7 +299,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
 				System.out.println("GetAllAppointments : AppointmentId : " + appointmentId);
 
-				output += "<tr><td><input id = \"hidAppointmentIdUpdate\" name = \"hidAppointmentIdUpdate\" type=\"hidden\" value = '" + appointmentId + "'>" + appointmentId + "</td>";
+				output += "<tr><td><input id = 'hidAppointmentIdUpdate' name = 'hidAppointmentIdUpdate' type='hidden' value = '" + appointmentId + "'>" + appointmentId + "</td>";
 				output += "<td>" + patientId + "</td>";
 				output += "<td>" + patientName + "</td>";
 				output += "<td>" + phone + "</td>";
@@ -312,7 +312,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 				output += "<td>" + lastUpdateDate + "</td>";
 				output += "<td>" + lastUpdateTime + "</td>";
 				output += "<td>" + appointmentStatus + "</td>";
-				output += "<td><input name = \"btnUpdate\" type = \"button\" value = \"Update\" class = \"btnUpdate btn btn-success btn-sm\"></td>"
+				output += "<td><input name = 'btnUpdate' type = 'button' value = 'Update' class = 'btnUpdate btn btn-success btn-sm'></td>"
 						+ "<td><input name = 'btnRemove' type = 'button' value = 'Remove' class = 'btnRemove btn btn-danger btn-sm' data-appointmentid = '"+ appointmentId +"'>" 
 						+ "</td></tr>";
 								

@@ -83,6 +83,7 @@ public class AppointmentAPI extends HttpServlet {
 		String output = appointmentServiceImpl.createAppointment(appointment);
 		System.out.println(output);
 		response.getWriter().write(output);
+		System.out.println("response :" + response);
 	}
 
 
